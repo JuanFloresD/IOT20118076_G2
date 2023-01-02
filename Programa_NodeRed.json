@@ -1,0 +1,316 @@
+[
+    {
+        "id": "f64df6fb8b48320b",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "070c61ed12d51bc0",
+        "type": "mqtt in",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "topic": "temperatura",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "aea044927c0ed3ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 340,
+        "wires": [
+            [
+                "4b757802251357eb",
+                "2692363fcb92f95e"
+            ]
+        ]
+    },
+    {
+        "id": "4b757802251357eb",
+        "type": "ui_gauge",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "group": "9ff70dcd9dc13ba4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura (°C)",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "30",
+        "seg2": "60",
+        "className": "",
+        "x": 530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "bdfd704b470c901a",
+        "type": "mqtt in",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "topic": "humedad",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "aea044927c0ed3ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 440,
+        "wires": [
+            [
+                "b4b4e60569a3683e",
+                "eb95b98dcf77c471"
+            ]
+        ]
+    },
+    {
+        "id": "b4b4e60569a3683e",
+        "type": "ui_chart",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "group": "7780ce15cdfb84e0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Hum_DHT22",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 450,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb95b98dcf77c471",
+        "type": "ui_gauge",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "group": "7780ce15cdfb84e0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humedad Relativa (%)",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "30",
+        "seg2": "60",
+        "className": "",
+        "x": 480,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2692363fcb92f95e",
+        "type": "ui_chart",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "group": "9ff70dcd9dc13ba4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Temp_DHT22",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 520,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "af0ae0639cd5bdf9",
+        "type": "mysql",
+        "z": "f64df6fb8b48320b",
+        "mydb": "1a2f37baa84c2980",
+        "name": "",
+        "x": 580,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "992cfc38a3604ad3",
+        "type": "function",
+        "z": "f64df6fb8b48320b",
+        "name": "function 2",
+        "func": "msg.payload = msg.payload.split(\",\");\nvar tem = msg.payload[0];\nvar hum = msg.payload[1];\n\nmsg.topic = \"INSERT INTO lecturasensor (FECHA,DISPOSITIVO,TEMPERATURA,HUMEDAD) VALUES (CURRENT_TIMESTAMP,'DHT22', \"+tem+\", \"+hum+\");\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "af0ae0639cd5bdf9"
+            ]
+        ]
+    },
+    {
+        "id": "e9a6784ce8614efd",
+        "type": "mqtt in",
+        "z": "f64df6fb8b48320b",
+        "name": "",
+        "topic": "canal",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "aea044927c0ed3ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "992cfc38a3604ad3"
+            ]
+        ]
+    },
+    {
+        "id": "aea044927c0ed3ed",
+        "type": "mqtt-broker",
+        "name": "broker.hivemq.com",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9ff70dcd9dc13ba4",
+        "type": "ui_group",
+        "name": "Sensor DHT22_Temperatura",
+        "tab": "c2d86a667bda7b55",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7780ce15cdfb84e0",
+        "type": "ui_group",
+        "name": "Sensor DHT22_Humedad",
+        "tab": "c2d86a667bda7b55",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1a2f37baa84c2980",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3307",
+        "db": "bd_proyectoiot",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "c2d86a667bda7b55",
+        "type": "ui_tab",
+        "name": "Tabla lectura Sensor",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
